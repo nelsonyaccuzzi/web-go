@@ -11,7 +11,7 @@ pipeline {
                 container('podman') {
                     script {
                         sh 'podman build -t docker.io/jmambrinventre/web-go:$BUILD_NUMBER -f Dockerfile'
-                        sh 'podman login -u $DOCKERHUB_CREDS_USR -p DOCKER_CREDS_PSW'
+                        sh 'podman login docker.io -u $DOCKERHUB_CREDS_USR -p DOCKER_CREDS_PSW'
                         sh 'podman push docker.io/jmambrinventre/web-go:$BUILD_NUMBER'
                     }
                 }
